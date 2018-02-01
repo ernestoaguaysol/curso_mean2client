@@ -19,7 +19,7 @@
       <div *ngIf="errorMessage" class="alert alert-info" role="alert">
           {{errorMessage}}!
       </div>
-      <form (ngSubmit)="guardar(forma)" #forma="ngForm">
+      <form (ngSubmit)="onSubmitLogin()" #forma="ngForm">
 
         <div class="form-group">
           <label>Email</label>
@@ -89,7 +89,7 @@
     <div class="col-md-4">
       <h2>Register</h2>
 
-      <!-- <form (ngSubmit)="guardar(forma)" #forma="ngForm">
+      <form (ngSubmit)="onSubmitRegister()" #forma2="ngForm">
 
         <div class="form-group">
           <label>Nombre</label>
@@ -97,7 +97,7 @@
             type="text"
             class="form-control" 
             placeholder="Nombre" 
-            [(ngModel)]="user.name" 
+            [(ngModel)]="user_register.name" 
             name="name" 
             required 
             minlength="2" 
@@ -119,7 +119,7 @@
               type="text"
               class="form-control" 
               placeholder="Apellido" 
-              [(ngModel)]="user.surname" 
+              [(ngModel)]="user_register.surname" 
               name="surname" 
               required 
               minlength="2" 
@@ -141,7 +141,7 @@
               type="email" 
               class="form-control is-invalid" 
               placeholder="email@ejemplo.com"
-              [(ngModel)]="user.email" 
+              [(ngModel)]="user_register.email" 
               name="email" 
               required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" 
               #email="ngModel">
@@ -156,8 +156,14 @@
 
         <div class="form-group">
           <label>Password</label>
-          <input [ngClass]="{'is-invalid': (password.errors?.minlength || password.errors?.required) && password.touched }" type="password"
-            class="form-control" placeholder="Password" [(ngModel)]="user.password" name="password" required minlength="5" #password="ngModel">
+          <input [ngClass]="{'is-invalid': (password.errors?.minlength || password.errors?.required) && password.touched }" 
+            type="password"
+            class="form-control" 
+            placeholder="Password" 
+            [(ngModel)]="user_register.password" 
+            name="password" 
+            required minlength="5" 
+            #password="ngModel">
     
           <div class="invalid-feedback" *ngIf="password.errors?.required">
             Este campo es requerido.
@@ -169,18 +175,16 @@
     
         <button type="submit" 
         class="btn btn-primary" 
-        [disabled]="!forma.valid">
+        [disabled]="!forma2.valid">
           Registrarse
         </button>
     
-      </form> -->
+      </form>
 
 
     </div>
 
   </div>
-
-
 
 </div>
   

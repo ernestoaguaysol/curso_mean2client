@@ -11,12 +11,14 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit {
   title = 'app';
   public user: User;
+  public user_register: User;
   public identity: any;
   public token;
   public errorMessage;
 
   constructor ( private _userService: UserService ) {
     this.user = new User();
+    this.user_register = new User();
   }
 
   ngOnInit() {
@@ -27,7 +29,7 @@ export class AppComponent implements OnInit {
     console.log(this.token);
   }
 
-  public guardar(forma: NgForm) {
+  public onSubmitLogin() {
 
     //conseguir los datos del usuario identificado
     this._userService.singup(this.user).subscribe(
@@ -84,5 +86,9 @@ export class AppComponent implements OnInit {
     this.identity = null;
     this.token = null;
     this.user = new User();
+  }
+
+  onSubmitRegister() {
+    console.log(this.user_register);
   }
 }
