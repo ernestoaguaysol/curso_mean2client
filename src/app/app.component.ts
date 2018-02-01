@@ -20,43 +20,30 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.identity = this._userService.getIdentity();
+    this.token = this._userService.getToken();
+
+    console.log(this.identity);
+    console.log(this.token);
   }
 
-  guardar(forma: NgForm) {
-    // console.log("formulario posteado");
-    // console.log(forma);
-    // console.log(forma.value);
-    // console.log(this.user.email);
+  public guardar(forma: NgForm) {
 
     //conseguir los datos del usuario identificado
     this._userService.singup(this.user).subscribe(
     response => {
-      console.log(response);
       let identity = response.user;
       this.identity = identity;
 
       if (!this.identity._id) {
         alert('El usuario no está correctamente identificado');
       } else {
-        // local storage sesion
-        //conseguir los datos del usuario identificado
-    this._userService.singup(this.user).subscribe(
-    response => {
-      console.log(response);
-      let identity = response.user;
-      this.identity = identity;
+        // crea elemento en local storage para tener el usuario sesion
+        localStorage.setItem('identity', JSON.stringify(identity));
 
-      if (!this.identity._id) {
-        alert('El usuario no está correctamente identificado');
-      } else {
-        // local storage sesion
-
-        // conseguir token del user
-
-        //conseguir los datos del usuario identificado
+        //conseguir el token para enviar en cada peticion http
         this._userService.singup(this.user, 'true').subscribe(
           response => {
-            console.log(response);
             let token = response.token;
             this.token = token;
       
@@ -64,7 +51,8 @@ export class AppComponent implements OnInit {
               alert('El token no se ha generado');
             } else {
               // local storage para token
-      
+              localStorage.setItem('token', token);
+
               console.log(token);
               console.log(identity);
             }
@@ -76,18 +64,7 @@ export class AppComponent implements OnInit {
               this.errorMessage = body.message;
               console.error(errorMessage);
             }
-          });
-          }
-        },
-        error => {
-          let errorMessage = <any>error;
-          if (errorMessage) {
-            let body = JSON.parse(error._body);
-            this.errorMessage = body.message;
-            console.error(errorMessage);
-          }
         });
-        // conseguir token del user
       }
     },
     error => {
@@ -98,5 +75,14 @@ export class AppComponent implements OnInit {
         console.error(errorMessage);
       }
     });
+  }
+
+  logout() {
+    localStorage.removeItem('identity');
+    localStorage.removeItem('token');
+    localStorage.clear();
+    this.identity = null;
+    this.token = null;
+    this.user = new User();
   }
 }

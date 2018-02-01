@@ -2,7 +2,13 @@
 
   <div class="row">
     <div class="col-md-12" *ngIf="identity">
-        <h1>Estas logueado</h1>
+        <h1>Estas logueado {{identity.name}}</h1>
+        
+        <button (click)="logout()"
+          class="btn btn-danger"
+          type="button">
+          Cerrar sesión
+        </button>
     </div>
   </div>
 
