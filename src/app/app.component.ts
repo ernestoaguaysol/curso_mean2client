@@ -54,9 +54,6 @@ export class AppComponent implements OnInit {
             } else {
               // local storage para token
               localStorage.setItem('token', token);
-
-              console.log(token);
-              console.log(identity);
             }
           },
           error => {
@@ -79,7 +76,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  logout() {
+  public logout() {
     localStorage.removeItem('identity');
     localStorage.removeItem('token');
     localStorage.clear();
@@ -88,7 +85,30 @@ export class AppComponent implements OnInit {
     this.user = new User();
   }
 
-  onSubmitRegister() {
+  public onSubmitRegister() {
     console.log(this.user_register);
+
+    this._userService.register(this.user_register)
+      .subscribe(
+        res => {
+          let user = res.user;
+          this.user_register = user;
+
+          if (!this.user_register._id) {
+            alert('Error al registrarse');
+          } else {
+            console.log('registrado correctamete ', this.user_register);
+            this.user_register = new User();
+          }
+        },
+        err => {
+          let errorMessage = <any>err;
+          if (errorMessage) {
+            let body = JSON.parse(err._body);
+            this.errorMessage = body.message;
+            console.error(errorMessage);
+          }
+        }
+      );
   }
 }

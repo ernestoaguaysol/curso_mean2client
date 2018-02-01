@@ -21,12 +21,20 @@ export class UserService {
     if (gethash) {
       user_to_login.gethash = gethash;
     }
-    let json = JSON.stringify(user_to_login);
-    let params = json;
+    let params = JSON.stringify(user_to_login);
 
     let headers = new Headers({'Content-Type': 'application/json'});
 
     return this.http.post(this.url+'login', params, {headers: headers})
+                    .map(res => res.json());
+  }
+
+  register(user_to_register) {
+    let params = JSON.stringify(user_to_register);
+
+    let headers = new Headers({'Content-Type': 'application/json'});
+
+    return this.http.post(this.url+'register', params, {headers: headers})
                     .map(res => res.json());
   }
 
@@ -52,5 +60,7 @@ export class UserService {
 
     return this.token;
   }
+
+  
 
 }
