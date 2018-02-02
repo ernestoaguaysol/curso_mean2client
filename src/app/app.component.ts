@@ -9,7 +9,6 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'app';
   public user: User;
   public user_register: User;
   public identity: any;

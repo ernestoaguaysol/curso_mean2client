@@ -14,6 +14,7 @@ import { UserService } from './services/user.service';
 import { AppComponent } from './app.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -21,7 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   declarations: [
     AppComponent,
     UserEditComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
