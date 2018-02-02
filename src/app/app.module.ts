@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 
 // services and providers
 import { UserService } from './services/user.service';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
