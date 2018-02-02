@@ -15,6 +15,10 @@ import { AppComponent } from './app.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
+import { BuscarComponent } from './components/buscar/buscar.component';
+import { ArtistasComponent } from './components/artistas/artistas.component';
+import { AlbumsComponent } from './components/albums/albums.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 
 
@@ -23,7 +27,11 @@ import { LoginComponent } from './components/login/login.component';
     AppComponent,
     UserEditComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    BuscarComponent,
+    ArtistasComponent,
+    AlbumsComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
