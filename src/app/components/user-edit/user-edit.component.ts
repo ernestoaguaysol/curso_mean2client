@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-user-edit',
@@ -7,7 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserEditComponent implements OnInit {
 
-  constructor() { }
+  public titulo: string;
+  public user: User;
+  public identity;
+  public token;
+
+  constructor(private _userService: UserService) {
+
+    this.identity = this._userService.getIdentity();
+    this.token = this._userService.getToken();
+    this.titulo = 'Actualizar los datos';
+   }
 
   ngOnInit() {
   }

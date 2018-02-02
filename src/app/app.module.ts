@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from "@angular/forms";
 
-
-import { AppComponent } from './app.component';
-
 // services and providers
 import { UserService } from './services/user.service';
+
+// Componentes and Pipes
+import { AppComponent } from './app.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+
 
 
 @NgModule({
