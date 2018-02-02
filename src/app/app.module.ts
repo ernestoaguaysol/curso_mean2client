@@ -9,13 +9,15 @@ import { UserService } from './services/user.service';
 // Componentes and Pipes
 import { AppComponent } from './app.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserEditComponent
+    UserEditComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
