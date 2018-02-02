@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from "@angular/forms";
 
+// Router
+import { app_routing } from './app.routes';
+
+
 // services and providers
 import { UserService } from './services/user.service';
 
@@ -22,7 +26,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    app_routing
   ],
   providers: [
     UserService
