@@ -5,8 +5,7 @@ import { User } from '../../models/user';
 
 @Component({
   selector: 'app-user-edit',
-  templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.css']
+  templateUrl: './user-edit.component.html'
 })
 export class UserEditComponent implements OnInit {
 

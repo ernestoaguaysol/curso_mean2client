@@ -6,13 +6,16 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active"
+      *ngIf="_userService.getIdentity()">
         <a class="nav-link" [routerLink]="['/artistas']">Artistas <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active"
+      *ngIf="_userService.getIdentity()">
         <a class="nav-link" [routerLink]="['/albums']">Albums</a>
       </li>
-      <li class="nav-item dropdown" routerLinkActive="active">
+      <li class="nav-item dropdown" routerLinkActive="active"
+      *ngIf="_userService.getIdentity()">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Perfil
         </a>
@@ -21,13 +24,23 @@
           <a class="dropdown-item" [routerLink]="['/user-edit']">Editar Perfil</a>
         </div>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active"
+          *ngIf="_userService.getIdentity()">
         <a class="nav-link" [routerLink]="['/buscar']">Buscar</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
+    <span class="navbar-text">
+      
+      <!-- <button (click)="login()"
+        *ngIf="!_userService.getIdentity()" 
+        type="button" class="btn btn-outline-primary btn-sm">Ingresar
+      </button> -->
+
+      <button (click)="logout()"
+        *ngIf="_userService.getIdentity()"
+        type="button" class="btn btn-outline-danger btn-sm">Salir
+      </button>
+
+    </span>
   </div>
 </nav>

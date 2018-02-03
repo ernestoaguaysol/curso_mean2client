@@ -6,13 +6,16 @@ import { AlbumsComponent } from './components/albums/albums.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 
+// Auth Guard
+import { AuthGuardService } from './services/auth-guard.service';
+
 const routes: Routes = [
     { path: 'login-register', component: LoginComponent },
-    { path: 'artistas', component: ArtistasComponent },
-    { path: 'albums', component: AlbumsComponent },
-    { path: 'buscar', component: BuscarComponent },
-    { path: 'perfil', component: PerfilComponent },
-    { path: 'user-edit', component: UserEditComponent },
+    { path: 'artistas', component: ArtistasComponent, canActivate: [ AuthGuardService ]},
+    { path: 'albums', component: AlbumsComponent , canActivate: [ AuthGuardService ]},
+    { path: 'buscar', component: BuscarComponent , canActivate: [ AuthGuardService ]},
+    { path: 'perfil', component: PerfilComponent , canActivate: [ AuthGuardService ]},
+    { path: 'user-edit', component: UserEditComponent , canActivate: [ AuthGuardService ]},
     { path: '**', pathMatch: 'full', redirectTo: 'login-register' },
 
 ];

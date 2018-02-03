@@ -9,6 +9,7 @@ import { app_routing } from './app.routes';
 
 // services and providers
 import { UserService } from './services/user.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 // Componentes and Pipes
 import { AppComponent } from './app.component';
@@ -40,7 +41,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     app_routing
   ],
   providers: [
-    UserService
+    UserService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
