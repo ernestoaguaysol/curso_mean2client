@@ -25,7 +25,7 @@ export class UserService {
 
     let headers = new Headers({'Content-Type': 'application/json'});
 
-    return this.http.post(this.url+'login', params, {headers: headers})
+    return this.http.post(`${this.url}login`, params, {headers: headers})
                     .map(res => res.json());
   }
 
@@ -44,10 +44,10 @@ export class UserService {
     let headers = new Headers(
     {
       'Content-Type': 'application/json',
-      'Authotization': this.getToken()
+      'Authorization': this.getToken()
     });
 
-    return this.http.put(`${this.url}'update-user/'${user_to_update._id}`, 
+    return this.http.put(`${this.url}update-user/${user_to_update._id}`, 
                           params,
                           {headers: headers})
                     .map(res => res.json());
