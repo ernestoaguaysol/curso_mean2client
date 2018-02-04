@@ -9,10 +9,7 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-    console.log(next);
-
     if (this._userService.getIdentity()) {
-      console.log('paso el guard');
       return true;
     } else {
       console.log('bloqueado');

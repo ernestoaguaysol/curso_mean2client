@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { User } from '../../models/user';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   public token;
   public errorMessage;
 
-  constructor ( private _userService: UserService ) {
+  constructor ( private _userService: UserService, private router: Router ) {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.user = new User();
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   public onSubmitLogin() {
@@ -50,6 +52,7 @@ export class LoginComponent implements OnInit {
             } else {
               // local storage para token
               localStorage.setItem('token', token);
+              this.router.navigate(['/artistas']);
             }
           },
           error => {
